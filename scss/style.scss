@@ -1,0 +1,236 @@
+@import "config";
+
+@mixin center-item($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: $font-stack;
+  height: 100vh;
+  min-width: 375px;
+  background-color: $Light-Grayish-Blue;
+  @include center-item(column, center, center);
+}
+main {
+  width: 327.6px;
+  height: 512.9px;
+  background-color: $light-color;
+  border-radius: 10.4px;
+  //   @include center-item(column, center, none);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .hero {
+    background-image: $background-image;
+    background-size: 327.6px;
+    background-position: center;
+    background-position-y: -18px;
+    background-repeat: no-repeat;
+    transition: 1s;
+    width: 100%;
+    height: 200.2px;
+    border-radius: 10.4px 10.4px 0px 0px;
+  }
+  .hero:hover {
+    transition: 1s;
+    border-radius: 10.4px 10.4px 20.4px 20.4px;
+    background-size: 400px;
+  }
+  .main-content {
+    margin-top: 41.5px;
+    width: 267.6px;
+    height: 252.4px;
+    h1 {
+      line-height: 22px;
+      width: 100%;
+      height: 64px;
+      font-size: 0.906rem;
+      color: $Very-Dark-Grayish-Blue;
+      margin-bottom: 18.8px;
+    }
+    p {
+      height: 94.4px;
+      font-size: 0.844rem;
+      margin-bottom: 32.2px;
+      color: grey;
+    }
+    //   share active container smaller viewport
+    .active {
+      @include center-item(row, center, start);
+      gap: 20px;
+      height: 65.3px;
+      width: 327.6px;
+      border-radius: 0px 0px 18px 18px;
+      background-color: $Very-Dark-Grayish-Blue;
+      position: absolute;
+      padding-left: 30px;
+      transition: 2s;
+      margin-top: 15px;
+      margin-left: -30px;
+      z-index: 1;
+      h3 {
+        color: rgb(165, 162, 162);
+        font-size: 0.6rem;
+        letter-spacing: 8px;
+      }
+      .share-links {
+        height: 20.4px;
+        width: 20.6px;
+      }
+    }
+
+    .user {
+      width: 100%;
+      height: 41.2px;
+      gap: 40px;
+      @include center-item(row, center, none);
+
+      .img-michelleA {
+        width: 40px;
+        height: 100%;
+        border-radius: 50%;
+      }
+      .michelleA {
+        margin-left: -23px;
+        margin-right: 18px;
+        width: 116.9px;
+        height: 100%;
+        font-size: 7.6px;
+        gap: 5px;
+        @include center-item(column, none, center);
+        h2 {
+          color: $Very-Dark-Grayish-Blue;
+        }
+        .date {
+          color: grey;
+        }
+      }
+      .share {
+        width: 33.2px;
+        height: 80%;
+        @include center-item(column, center, center);
+        background-color: $Light-Grayish-Blue;
+        border-radius: 50%;
+        position: relative;
+        transition: 1s;
+        z-index: 2;
+      }
+      .share:hover {
+        border: dotted $Light-Grayish-Blue 5px;
+
+        margin-top: -5px;
+        transition: 1s;
+      }
+    }
+  }
+}
+// media query
+@media only screen and (min-width: 768px) {
+  body {
+    width: 100vw;
+    // background-color: $Light-Grayish-Blue;
+    @include center-item(row, center, center);
+  }
+  main {
+    width: 731.3px;
+    height: 280.9px;
+    @include center-item(row, center, none);
+
+    .hero {
+      height: 100%;
+      width: 286.7px;
+      background-size: 400px;
+      background-position-y: unset;
+      background-position-x: 0.1px;
+      border-radius: 10.4px 0px 0px 10.4px;
+    }
+    .hero:hover {
+      background-size: 550px;
+    }
+    .main-content {
+      margin-left: 38.7px;
+      margin-top: unset;
+      width: 367.2px;
+      height: 211.2px;
+      @include center-item(column, unset, none);
+
+      h1 {
+        width: 100%;
+        height: 77.2px;
+        font-size: 1.2rem;
+        margin-bottom: 18.5px;
+      }
+      p {
+        width: 100%;
+        height: 54.4px;
+        font-size: 0.8rem;
+        margin-bottom: 19.2px;
+      }
+      //   share active container larger viewport
+      .active {
+        @include center-item(row, center, center);
+        gap: 20px;
+        height: 55.3px;
+        width: 248px;
+        border-radius: 18px;
+        background-color: $Very-Dark-Grayish-Blue;
+        padding-left: unset;
+        position: absolute;
+        margin-top: -70px;
+        margin-left: 235px;
+        z-index: 1;
+        h3 {
+          color: rgb(165, 162, 162);
+          letter-spacing: 0.2rem;
+          font-size: 0.7rem;
+        }
+        .share-links {
+          height: 20.4px;
+          width: 20.6px;
+        }
+      }
+      .user {
+        width: 100%;
+        height: 41.2px;
+        gap: 40px;
+
+        .michelleA {
+          margin-right: 114px;
+        }
+        .share:hover {
+          background-color: $Very-Dark-Grayish-Blue;
+          rotate: -60deg;
+          transition: 400ms;
+        }
+        .share-container {
+          @include center-item(row, center, center);
+          gap: 20px;
+          height: 55.3px;
+          width: 248px;
+          border-radius: 18px;
+          background-color: $Very-Dark-Grayish-Blue;
+          position: absolute;
+          margin-top: -70px;
+          margin-left: 235px;
+          z-index: 1;
+          h3 {
+            color: rgb(165, 162, 162);
+            font-size: 0.8rem;
+          }
+          .share-links {
+            height: 100px;
+            width: 20.6px;
+          }
+        }
+      }
+    }
+  }
+}
